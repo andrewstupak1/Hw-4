@@ -1,7 +1,7 @@
-<h1>Places</h1>
+<h1><%= @place["name"] %></h1>
 
 <p>
-   <a href="/entries/new?place_id=<%= @place['id'] %>" class="btn btn-success">New Place</a>
+   <a href="/places/new?place_id=<%= @place['id'] %>" class="btn btn-success">New Place</a>
 </p>
 
 <% for entry in @entries %>

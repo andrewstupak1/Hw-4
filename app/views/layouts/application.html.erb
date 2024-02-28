@@ -32,7 +32,9 @@
   <nav class="navbar bg-primary mb-3" data-bs-theme="dark">
     <div class="container">
       <a class="navbar-brand zebra" href="/">Trip Log</a>
-      <span class="navbar-text">
+            <span class="navbar-text">
+      <a href="/">Home</a>
+      |
         <% @user = User.find_by({ "id" => session["user_id"] }) %>
         <% if @user == nil %>
           <a href="/users/new" class="btn btn-default">Sign Up</a>
