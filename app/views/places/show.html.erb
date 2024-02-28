@@ -1,26 +1,28 @@
-<h1><%= @place["name"] %></h1>
+<% if current_user %> 
+  <h1><%= @place["name"] %></h1>
 
-<p>
-   <a href="/places/new?place_id=<%= @place['id'] %>" class="btn btn-success">New Place</a>
-</p>
+  <p>
+     <a href="/places/new?place_id=<%= @place['id'] %>" class="btn btn-success">New Place</a>
+  </p>
 
-<div class="container"> 
-  <div class="row"> 
-    <% for entry in @entries %>
-      <div class="col-3"> 
-        <h3><%= entry["title"] %></h3>
-        <h5><%= entry["occurred_on"] %></h5>
-        <p><%= entry["description"] %></p>
-      </div> 
-    <% end %>
+  <div class="container"> 
+    <div class="row"> 
+      <% for entry in @entries %>
+        <div class="col-3"> 
+          <h3><%= entry["title"] %></h3>
+          <h5><%= entry["occurred_on"] %></h5>
+          <p><%= entry["description"] %></p>
+        </div> 
+      <% end %>
+    </div>
   </div>
-</div>
-<p>
-  <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
-</p>
 
-<p>
-  <a href="/places">Back to All Places</a>
-</p>
+  <p>
+    <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
+  </p>
 
-</div>
+  <p>
+    <a href="/places">Back to All Places</a>
+  </p>
+
+<% end %> 
