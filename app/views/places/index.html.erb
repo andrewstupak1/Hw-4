@@ -5,8 +5,12 @@
 </p>
 
 <ul>
-  <% for place in @places %>
-    <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+  <% if @places %> 
+    <% for place in @places %>
+      <li><a href="/places/<%= place["id"] %>"><%= place["name"] %></a></li>
+    <% end %>
+  <% else %>
+    <p>You don't have any places yet.</p>
   <% end %>
 </ul>
 
