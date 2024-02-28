@@ -4,15 +4,17 @@
    <a href="/places/new?place_id=<%= @place['id'] %>" class="btn btn-success">New Place</a>
 </p>
 
-<% for entry in @entries %>
-<h4>
-<div class="col-3">
-      <h4>
-  <h3><%= entry["title"] %></h3>
-  <h4><%= entry["occurred_on"] %></h4>
-  <p><%= entry["description"] %></p>
-<% end %>
-</h4>
+<div class="container"> 
+  <div class="row"> 
+    <% for entry in @entries %>
+      <div class="col-3"> 
+        <h3><%= entry["title"] %></h3>
+        <h5><%= entry["occurred_on"] %></h5>
+        <p><%= entry["description"] %></p>
+      </div> 
+    <% end %>
+  </div>
+</div>
 <p>
   <a href="/entries/new?place_id=<%= @place["id"] %>">New Entry</a>
 </p>
