@@ -39,12 +39,12 @@
           |
           <a href="/login" class="btn btn-default">Login</a>
         <% else %>
-          Logged in as: <%= @user["first_name"] %>
+          Logged in as: <%= @user["username"] %>
           |
           <a href="/logout">Logout</a>
         <% end %>
 
-        <a href="/posts/new/" class="btn btn-success">New Post</a>
+       
       </span>
     </div>
   </nav>
