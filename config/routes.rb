@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   # Custom route for landing page (aka root route)
   get "/", :controller => "places", :action => "index"
+
 end

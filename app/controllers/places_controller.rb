@@ -2,14 +2,15 @@ class PlacesController < ApplicationController
   before_action :authenticate_user!
 
     def index
-      @place = current_user.places 
+      @places = Place.where({ "user_id" => @current_user["id"] })
     end
   
     def show
-      @place = current_user.places.find_by(id: params[:id])
-      if @place
-        @entries = Entry.where(place_id: @place.id)
-      else
+      place = Place.find_by({ "id" => params["id"] })
+           if @place
+        @entries = Entry.where({ "place_id" => @place["id"], "user_id" => session["user_id"] })
+        redirect_to :action => 'show', :entries => @entries
+            else
         redirect_to places_path, alert: "Place not found."
       end
     end
@@ -17,14 +18,15 @@ class PlacesController < ApplicationController
   def new
   end
 
-  def create
-    @place = current_user.places.new(place_params) # This automatically sets the user_id for the place
-    if @place.save
-      redirect_to "/places", notice: "Place was successfully created."
-    else
-      render :new
-    end
+def create
+  @place = Place.new
+  @place["name"] = params["name"]
+  @place["user_id"] = @current_user["id"]
+  if @place.save
+    redirect_to "/places", notice: "Place was successfully created."
+  else
+    render :new
   end
 end
-  #above taken from chat gpt
+end
 
