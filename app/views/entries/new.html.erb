@@ -18,5 +18,19 @@
     <input type="date" name="occurred_on" id="occurred_on_input">
   </p>
 
+    <div class="mb-3">
+      <label for="uploaded_image_input" class="form-label">Upload Image</label>
+      <input type="file" name="uploaded_image" id="uploaded_image_input" class="form-control">
+    </div>
+
+          <%# conditionally display attached file if post.uploaded_image.attached? %>
+       <% if post.uploaded_image.attached? %>
+          <img src="<%= url_for(post.uploaded_image)%>" class="img-fluid">
+        <%# use url_for(post.uploaded_image) as attached file's url %>
+      <%# otherwise display original image url from database column %>
+       <% else %>
+        <img src="<%= post["image"] %>" class="img-fluid">
+
+
   <button>Save</button>
 </form>
